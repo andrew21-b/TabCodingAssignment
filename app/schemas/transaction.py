@@ -7,12 +7,15 @@ class TransactionType(str, Enum):
     settled = "Settled"
     refunded = "Refunded"
     chargeback = "Chargeback"
-    
+
+class CurrencyType(str, Enum):
+    eur = "EUR"
+    gbp = "GBP"
 
 class Transaction(BaseModel):
     id: str
     accountId: UUID
     amount: int
-    currency: str
+    currency: CurrencyType
     type: TransactionType
     dateTime: datetime
