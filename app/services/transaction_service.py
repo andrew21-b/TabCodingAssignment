@@ -14,4 +14,6 @@ def load_transactions() -> list[Transaction]:
         return [Transaction(**item) for item in data]
 
 def get_transactions_by_account(account_id: str) -> list[Transaction]:
+    if account_id is None:
+        raise ValueError("Account ID must be provided")
     return [transaction for transaction in load_transactions() if str(transaction.accountId) == account_id]
